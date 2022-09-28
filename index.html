@@ -1,192 +1,534 @@
 <!DOCTYPE html>
-<html lang="en" manifest="nullpass.appcache">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NullPass+ provides you with a unique password for every service you use without the cumbersome task of managing a password file!">
-    <meta name="author" content="Adam MacLeod &amp; JM Alarcón">
-    <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-touch-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon-180x180.png">
-	<link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="favicons/favicon-194x194.png" sizes="194x194">
-	<link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="favicons/android-chrome-192x192.png" sizes="192x192">
-	<link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="favicons/manifest.json">
-	<link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
-	<link rel="shortcut icon" href="favicons/favicon.ico">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="favicons/mstile-144x144.png">
-	<meta name="msapplication-config" content="favicons/browserconfig.xml">
-	<meta name="theme-color" content="#ffffff">
+<html lang="en" manifest="ekapassword.appcache">
+<head>
+<!-- 
+/* NullPass original license */
 
-    <title>NullPass+</title>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-    <style>
-      input {
-        margin-bottom: 4px;
-      }
-	  #password {
-		font-family: 'Inconsolata', monospace;
-		}
-    </style>
-  </head>
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
-  <body>
-    <div class="container">
-      <div class="row">
-        
-        <div class="col-xs-12 col-sm-4 col-sm-push-8">
-          <h1>&#8709;Pass+</h1>
-          <form role="form">
-            <input type="text"     id="resource"   class="form-control frm-input" placeholder="Resource name" required autofocus autocomplete="off">
-            <input type="password" id="master"   class="form-control frm-input" placeholder="Master password" required>
-            <input type="number"   id="length"   class="form-control frm-input" value="12" required autocomplete="off">
-            <div class="input-group">
-              <input type="text"     id="password" class="form-control well well-sm" placeholder="Resulting password" readonly>
-              <div id="reveal" class="input-group-addon">
-                <span class="glyphicon glyphicon-eye-open"></span>
-              </div>
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "{}"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright {yyyy} {name of copyright owner}
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EkaPassword provides you with a unique password for every service you use without the cumbersome task of managing a password file!">
+  <meta name="author" content="Adam MacLeod &amp; JM Alarcón; Dang Ph Cuong">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="manifest" href="favicons/site.webmanifest">
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>EkaPassword</title>
+
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    input {
+      margin-bottom: 4px;
+    }
+    #password {
+      font-family: 'courier new', monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-4 col-sm-push-8">
+
+        <h2>EkaPassword (v1)</h2>
+
+        <form role="form">
+          <input type="text" id="resource" class="form-control frm-input" placeholder="Resource name" required autofocus autocomplete="off">
+          <input type="password" id="master" class="form-control frm-input" placeholder="Master password" required>
+          <input type="number" id="length" placeholder="Password length min=12, default=20" class="form-control frm-input" value="20" required autocomplete="off">
+          <div class="input-group">
+            <input type="text" id="password" class="form-control well well-sm" placeholder="Resulting password" readonly>
+            <div id="reveal" class="input-group-addon">
+              <!-- <span class="glyphicon glyphicon-eye-open"></span> -->
+              <span class="icon-notification">🔍</span>
             </div>
-          </form>  
-        </div><!-- /column -->
+          </span>
+        </div>
+        <span style="font-size:small; color: #ccc;">Click on the result ••• field to copy it. Password length min = 12, default = 20, max = 88.</span>
+      </form>
+    </div>
+    <!-- /column -->
 
-        <div class="col-xs-12 col-sm-8 col-sm-pull-4">
-          <div id="about">
-            <h1>What is &#8709;Pass+?</h1>
-            <h2>Easy</h2>
-            <p>
-              NullPass+ is a password manager that doesn't require you to manage a password file. This is accomplished by combining a <strong>single master password</strong> with a site specific token (often the resource name or the account or resource name that you want to get a passwod for) to generate a unique password. This password is cryptographically secure and your original password is unrecoverable should an attacker manage to obtain your unique site password. This means an attack on one of the sites you visit will not disclose your password to any other services - keeping your accounts safe.
-            </p>
+    <div class="col-xs-12 col-sm-8 col-sm-pull-4">
 
-            <h2>Secure</h2>
-            <p>
-              NullPass+ does not store any information that you enter, in fact your passwords never even leave your computer! When you enter information into the NullPass+ form there is some client side code that exectues <strong>inside your own browser</strong> which does not transmit your information to our servers or the Internet at all.
-            </p>
+      <div id="about">
 
-            <h2>Mobile and offline</h2>
-            <p>
-              NullPass+ works on mobile devices and it doesn't need any connection to the internet in order to work. You can pin it to your mobile device's Home Screen to have it always available, even when you're off-line.
-            </p>
+        <h2>Easy</h2>
+        <p>
+          EkaPassword is a <b>password manager</b> that doesn't require you to manage a password file. This is accomplished by combining a single master password with a site-specific token (often domain name) to <b>generate a unique password</b>. This password is cryptographically secure and your original password is unrecoverable should an attacker manage to obtain your unique site password. This means an attack on one of the sites you visit will not disclose your password to any other services - keeping your accounts safe.
+        </p>
 
-            <h2>Open</h2>
-            <p>
-              If you are interested, NullPass+ works by calculating <code>SHA-512("length" + "your password" + "resource")</code>, truncating the result to <em>length</em> and adding a symbol in the middle to allow for complexity requirements. You can see this in effect by viewing the source of this webpage, or you can view/fork the project on <a href="https://github.com/jmalarcon/NullPassPlus">GitHub</a>!
-            </p>
-            <p>
-              NullPass+ stands on the shoulders of giants. The following projects were instrumental to the creation of NullPass+:
-              <a href="https://github.com/adammacleod/nullpass">NullPass by Adam Macleod</a> (the base for this project),
-              <a href="http://caligatio.github.io/jsSHA/">jsSHA</a>, 
-              <a href="http://getbootstrap.com/">Bootstrap</a>,
-              <a href="http://jquery.com/">jQuery</a> &amp;
-              <a href="https://github.com/">GitHub</a>.
-            </p>
-          </div>
+        <h3>Example</h3>
 
-          <div id="contact">
-            <h1>Contact</h1>
-            <p>I'm Jose Alarcon and you can visit me at <a href="http://www.jasoft.org">JASoft.org</a>, <a href="https://github.com/jmalarcon">GitHub</a> or <a href="https://twitter.com/jm_alarcon/">Tweet to me</a>.</p>
-			<p>I modified the <a href="https://github.com/adammacleod/nullpass">original project by Adam Macleod</a> to allow it to work off-line, to ensure that at least a symbol is always included, to be able to pin it to the home screen in mobile phones and Windows OS, and to allow copying the generated password more more easily from mobile phones. <a href="https://github.com/jmalarcon/nullpass">Source code for this version & more details on Github</a></p>
-          </div>
-        </div><!-- /column -->
 
-      </div><!-- /row -->
-    </div> <!-- /container -->
+        <blockquote>
+          One master password to rule them all.
+        </blockquote>
 
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/sha512.js"></script>
-    
-    <script>
+        <p>
+          <strong>Account 1</strong>
+        </p>
+        <ul>
+          <li>Resource name: <code>a@gmail.com</code></li>
+          <li>Master password: <code>yourSecureMasterPassword</code></li>
+          <li>Password length: 20</li>
+        </ul>
+        <p>
+          =&gt; Get a unique password for account 1  <code>r/fLpY6En50fN\BC9zAn</code>
+        </p>
+        <p>
+          <strong>Account 2</strong>
+        </p>
+        <p>
+          Only change the resource name, keep others
+        </p>
+        <ul>
+          <li>Resource name: <code>b@gmail.com</code></li>
+        </ul>
+        <p>
+          =&gt; Get a unique password for account 2: <code>EeLDeDt31D0mY[ZCoZJa</code>
+        </p>
 
-      var pwd = '';
 
-      //Gets a symbol to add to the password using a simple mapping for characters
-      function getSymbolFromChar(char){
-        var symbols = "@#$%&[]{}_!()*";
-        var charCode = char.charCodeAt(0); //Unicode for the character
-        var sym = charCode%symbols.length; //modulus to get a corrresponding symbol
-        return symbols.substring(sym,sym+1);
-      }
-      
-      function generatePassword(master, resource, length) {            
-        var pass = length + master + resource.trim().toLowerCase();
-        var shaObj = new jsSHA(pass, "TEXT");
-        var hash = shaObj.getHash("SHA-512", "B64");
-        hash = hash.substring(0,length);
-        //Substitute char in the middle with a symbol
-        var midPass = Math.floor(hash.length/2);
-        var sym = getSymbolFromChar(hash[midPass]); //Symbol to substitute (in the middle of the hash string)
-        return hash.substring(0,midPass) + sym + hash.substring(midPass+1); //Hash with changed symbol in the middle
-      }
 
-      function maskedPassword(){
-        return Array(pwd.length+1).join('•');
-      }
+        <h2>Secure</h2>
+        <p>
+          EkaPassword does not store any information that you enter, in fact, your passwords never even leave your computer! When you enter information into the EkaPassword form there is some client-side code that executes <strong>inside your browser</strong> which does not transmit your information to our servers or the Internet at all.
+        </p>
 
-      function updatePassword(){
-        var master = $('#master')[0].value;
-        var resource = $('#resource')[0].value;
-        if (master == '' || resource == '')
-          return;
-        var length = Math.floor($('#length').val());
-        //Check length. Less than 6 or more than 88 is not allowed (the hash is 88 in length and less than 6 is nonsense)
-        if (isNaN(length) || length < 6){
-            length = 6;
-            //$('#length').val('6');
-        }
-        if (length > 88){
-            length = 88;
-            $('#length').val('88');
-        }
+        <h2>Open Source</h2>
 
-        pwd = generatePassword(master, resource, length);
-        $('#password').val(maskedPassword());
-      }
 
-      function revealPassword() {
-        if (pwd != '')
-          $('#password').val(pwd);
-      }
+        <p>
+          View <strong>EkaPassword</strong>
+          <a href="https://github.com/vpnry/ekapassword">source code here - GitHub</a>
+        </p>
 
-      function hidePassword() {
-        if (pwd != '')
-        $('#password').val(maskedPassword());
-      }
 
-      $(document).ready(function() {
-        $('.frm-input').keyup(updatePassword).mouseup(updatePassword);
-        $('#reveal').on('mousedown touchstart', revealPassword).on('mouseup touchend', hidePassword);
-        $('#password').on('focus', function(){
-          revealPassword();
-          this.select();
-          document.execCommand('copy');
-          hidePassword();
-          $(this).tooltip({
-              trigger: 'manual',
-              delay: {show: 0, hide: 1500},
-              placement: 'bottom',
-              title: 'Password copied to clipboard!' 
-          }).tooltip('show');
-          window.setTimeout(function() {$('#password').tooltip('hide');}, 1500);
-        });
-      });
-    </script>
+        <p>
+          EkaPassword is derived from <a href="github.com/jmalarcon/NullPassPlus">NullPass+ by JM Alarcón</a> and <a href="https://github.com/adammacleod/nullpass">NullPass by Adam MacLeod</a>.
 
-  </body>
+        </p>
+        <p>
+          EkaPassword is not compatible with the others since it <b>changed</b> the algorithm to generate passwords to meet current password complexity requirements.
+        </p>
+
+
+        <h2>EkaPassword enhancements</h2>
+        <p>
+          I modified NullPass+ mainly to make sure that each output password will <strong>always include</strong> a random combination of <em>(number + upper case + lower case + special)</em> characters to meet recent secure password standards.
+        </p>
+
+        <p>
+
+          Since it is no more compatible with the old NullPass family, I give it a new name <strong>EkaPassword</strong>. In pāḷi language, <code>eka</code> means 1.
+        </p>
+
+        <p>
+          Check also other changes on <a href="https://github.com/vpnry/ekapassword"> GitHub</a>.
+        </p>
+
+        <h2>Download</h2>
+
+        <p>
+          It is <b>advisable</b> to <a href="https://github.com/vpnry/ekapassword/archive/refs/heads/master.zip">download EkaPassword</a> and store it securely. So, just in case, when our online pages are gone, you still have a backup version of it for using offline.
+        </p>
+        <p>
+          The included stand-alone HTML file <code>v1_ekapassword_standalone.html</code> should work on many platforms. View its SHA512SUM integrity checksum on <a href="https://github.com/vpnry/ekapassword"> vpnry/ekapassword</a>.
+        </p>
+
+        <h3>Online links</h3>
+
+
+        <p>
+          You can try EkaPassword online here:
+          <a href="https://vpnry.github.io/ekapassword">vpnry.github.io/ekapassword</a>. Or
+          <a href="https://ekapassword.pages.dev/"> here</a>.
+        </p>
+
+
+        <h2>Attributions</h2>
+        <ul>
+          <li>EkaPassword is a derived version of <a href="https://github.com/jmalarcon/NullPassPlus">NullPass+</a> by JM Alarcón and original <a href="https://github.com/adammacleod/nullpass">NullPass</a> by Adam MacLeod.</li>
+          <li>Hash library <a href="http://caligatio.github.io/jsSHA/">jsSHA</a>
+
+          </li>
+          <li><a href="http://getbootstrap.com/">Bootstrap</a>
+          </li>
+
+          <li><a href="http://jquery.com/">jQuery</a></li>
+
+          <li><a href="https://favicon.io/favicon-generator">Favicon generator</a>
+
+          </li>
+          <li><a href="https://github.com/">GitHub</a></li>
+        </ul>
+
+      </div>
+
+    </div>
+    <!-- /column -->
+
+  </div>
+  <!-- /row -->
+</div>
+<!-- /container -->
+
+<script src="js/jquery-3.6.1.min.js"></script>
+
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script src="js/jsSHA-3.2.0/dist/sha512.js"></script>
+
+<script>
+  var pwd = "";
+
+  var numberStr = "0123456789";
+  // python string.punctuation
+  var pyPunctuation = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
+  var smallAlphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  var bigAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+  //Gets a symbol to add to the password using a simple mapping for characters
+
+  function getSymbolFromChar(char) {
+    var symbols = "@#$%&[]{}_!()*";
+    var charCode = char.charCodeAt(0); //Unicode for the character
+    var sym = charCode % symbols.length; //modulus to get a corrresponding symbol
+    return symbols.substring(sym, sym + 1);
+  }
+
+
+  function hashThisText(text) {
+    var jsSHA_version_320 = new jsSHA("SHA-512", "TEXT", {
+      encoding: "UTF8",
+    });
+    jsSHA_version_320.update(text);
+
+    return jsSHA_version_320.getHash("B64");
+  }
+
+  function getLetter(textToHash, fromStr) {
+    var hash = hashThisText(textToHash);
+
+    var haf = Math.floor(hash.length / 2);
+    var n = hash[haf].charCodeAt(0);
+
+    var x = n % fromStr.length;
+
+    return fromStr.substring(x, x + 1);
+  }
+
+
+  function get4Chars(nTK) {
+
+    var addNumber = getLetter(nTK + numberStr, numberStr);
+
+    var addSmall = getLetter(nTK + smallAlphabet, smallAlphabet);
+
+    var addBig = getLetter(nTK + bigAlphabet, bigAlphabet);
+
+    var addPunct = getLetter(nTK + pyPunctuation, pyPunctuation);
+
+    var added4C = addNumber + addSmall + addBig + addPunct;
+
+    return added4C;
+  }
+
+
+
+  function generatePassword(master, resource, length) {
+
+    // current( input + output) = input for the next step
+
+    var inputToken = length.toString() + master + resource.trim().toLowerCase();
+
+    var hash = hashThisText(inputToken);
+
+    var add4 = get4Chars(inputToken + hash);
+
+    length = Number(length);
+
+    var midPass = Math.floor(length / 2);
+
+    // We removed 4 chars of the original hash, npassw still 88 chars
+    var npassw = hash.substring(0, midPass) + add4 + hash.substring(midPass + add4.length);
+
+    return npassw.substring(0, length);
+  }
+
+  function maskedPassword() {
+    return Array(pwd.length + 1).join("•");
+  }
+
+  function updatePassword() {
+    var master = $("#master")[0].value;
+    var resource = $("#resource")[0].value;
+    if (master == "" || resource == "") return;
+    var length = Math.floor($("#length").val());
+    //Check length. Less than 6 or more than 88 is not allowed (the hash is 88 in length and less than 6 is nonsense)
+    // Updated 2022 >= 12
+    if (isNaN(length) || length < 12) {
+      length = 12;
+      $('#length').val(12);
+    }
+    if (length > 88) {
+      length = 88;
+      $("#length").val(88);
+    }
+
+    pwd = generatePassword(master, resource, length);
+    $("#password").val(maskedPassword());
+  }
+
+  function revealPassword() {
+    if (pwd != "") $("#password").val(pwd);
+  }
+
+  function hidePassword() {
+    if (pwd != "") $("#password").val(maskedPassword());
+  }
+
+  $(document).ready(function () {
+    // $(".frm-input").keyup(updatePassword).mouseup(updatePassword);
+    $(".frm-input").on('change', updatePassword);
+
+    $("#reveal")
+    .on("mousedown touchstart", revealPassword)
+    .on("mouseup touchend", hidePassword);
+    $("#password").on("focus", function () {
+      revealPassword();
+      this.select();
+      document.execCommand("copy");
+      hidePassword();
+      $(this)
+      .tooltip({
+        trigger: "manual",
+        delay: {
+          show: 0, hide: 1500
+        },
+        placement: "bottom",
+        title: "Password copied to clipboard!",
+      })
+      .tooltip("show");
+      window.setTimeout(function () {
+        $("#password").tooltip("hide");
+      }, 1500);
+    });
+  });
+</script>
+
+</body>
 </html>
