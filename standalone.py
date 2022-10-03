@@ -52,7 +52,9 @@ def joinall(f='./index.html'):
         fio.write(html)
 
     print('\n\n v1_ekapassword_standalone.html sha512sum now is:')
+
     os.system('sha512sum v1_ekapassword_standalone.html')
+
     print('\n\n Remember to update sha512sum value in the Readme file.')
 
     print('Done')
