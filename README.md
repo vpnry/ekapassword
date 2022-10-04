@@ -3,8 +3,6 @@
 
 * Using offline: [download EkaPassword](https://github.com/vpnry/ekapassword/archive/refs/heads/master.zip)
 
-* Archive.org caches: [EkaPassword - caches](https://web.archive.org/web/20220000000000*/https://vpnry.github.io/ekapassword)
-
 ## EkaPassword
 **EkaPassword** is a **password manager**  web app that doesn't require you to manage a password file. With just one master password, you can generate infinite different passwords for different sites.
 

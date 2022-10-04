@@ -2,10 +2,11 @@
 
 Tested on Python 3.10.7
 
-https://vpnry.github.io/ekapassword
+Ref: https://vpnry.github.io/ekapassword
 Ref: jsSHA-3.2.0/test/genHashRounds.py
 '''
 
+import os
 import math
 import hashlib
 import binascii
@@ -51,7 +52,7 @@ def get4ch(pre_token):
     return f'{n}{s}{b}{p}'
 
 
-def gen_password(resource, masterpwd, pwd_len):
+def gen_password(resource: str, masterpwd: str, pwd_len: int) -> str:
     resource = str(resource).lower().strip()
 
     in_token = f'{pwd_len}{masterpwd}{resource}'
@@ -66,15 +67,67 @@ def gen_password(resource, masterpwd, pwd_len):
     # so the original hash is now hidden
     res = this_hash[0:haf] + add4chars + this_hash[haf + 4:]
 
-    
     res = res[0:pwd_len]
 
     return res
 
 
-if __name__ == '__main__':
-    a = gen_password('user@gmail.com', 'testpassword1', 20)
-    print(a)  # V13T1aYTQf9yA"r5vZTI
+def valid_number(n):
+    inf = '* Password length must be an integer n:  12 <= n <= 88'
+    try:
+        n = int(n)
+        if n < 12:
+            print(inf)
+            n = input('Enter password length: ')
+            n = valid_number(n)
+        if n > 88:
+            print(inf)
+            n = input('Enter password length: ')
+            n = valid_number(n)
 
-    b = gen_password('user@gmail.com', 'testpassword2', 20)
-    print(b)  # zPrm9UdfSz0xE/Vi6x75
+    except Exception:
+        print(inf)
+        n = input('Enter password length: ')
+        n = valid_number(n)
+
+    return n
+
+
+def cp_clipboard(text, isTermux=True):
+    if isTermux:
+        text = text.replace('"', '\\"')
+        # Android Termux API
+        x = os.system(f'''termux-clipboard-set "{text}"''')
+        if x == 0:
+            print('Copied to clipboard')
+        else:
+            print('FAILED to copy to clipboard')
+
+
+def cli():
+    while True:
+        print('***** EkaPassword v1 *****')
+        print('Press Ctrl + c and then enter to exit')
+        r = input('Enter ressource name: ')
+        p = input('Enter master password: ')
+        n = input('Enter password length: ')
+        if not n:
+            n = 20
+            print('\n *** No password length input. \nUsing default password length:', 20, '***\n')
+        n = valid_number(n)
+        pas = gen_password(r, p, n)
+        print('Password length:', len(pas))
+        print(pas)
+
+        cp_clipboard(pas)
+
+        print('\n')
+
+
+if __name__ == '__main__':
+    cli()
+    # a = gen_password('user@gmail.com', 'testpassword1', 20)
+    # print(a)  # V13T1aYTQf9yA"r5vZTI
+
+    # b = gen_password('user@gmail.com', 'testpassword2', 20)
+    # print(b)  # zPrm9UdfSz0xE/Vi6x75
